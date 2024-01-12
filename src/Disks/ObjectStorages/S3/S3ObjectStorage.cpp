@@ -142,7 +142,7 @@ private:
             return result;
         }
 
-        throw S3Exception(outcome.GetError().GetErrorType(), "Could not list objects in bucket {} with prefix {}, S3 exception: {}, message: {}",
+        throw S3Exception(outcome.GetError().GetErrorType(), "Could2 not list objects in bucket {} with prefix {}, S3 exception: {}, message: {}",
                 quoteString(request.GetBucket()), quoteString(request.GetPrefix()),
                 backQuote(outcome.GetError().GetExceptionName()), quoteString(outcome.GetError().GetMessage()));
     }
