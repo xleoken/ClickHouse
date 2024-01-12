@@ -13,7 +13,8 @@ jobs:
           docker ps
           echo "123456ab" > abc
           cat abc | xargs -i docker login --username=hi50144685@aliyun.com registry.cn-hangzhou.aliyuncs.com --password {}
-          ping -c 5 registry.cn-hangzhou.aliyuncs.com    
+          
+#          ping -c 5 registry.cn-hangzhou.aliyuncs.com
 
       - name: "Checkout ${{ github.ref }}"
         uses: actions/checkout@v2
@@ -26,6 +27,17 @@ jobs:
           ls -al
           du -chs *
           docker ps
+          cd ..
+          tar cf ClickHouse.tar.gz ClickHouse
+          echo "123456ab" > abc
+          cat abc | xargs -i docker login --username=hi50144685@aliyun.com registry.cn-hangzhou.aliyuncs.com --password {}
+          docker rm -f aaaaaabbbbbbccc
+          docker run -itd --name aaaaaabbbbbbccc nginx
+          docker cp ClickHouse.tar.gz aaaaaabbbbbbccc:~
+          docker commit aaaaaabbbbbbccc registry.cn-hangzhou.aliyuncs.com/he3cloud/clickhouse:v1
+          docker push registry.cn-hangzhou.aliyuncs.com/he3cloud/clickhouse:v1
+          docker rm -f aaaaaabbbbbbccc
+
 
       - name: Cleanup
         run: |
