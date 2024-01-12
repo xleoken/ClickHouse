@@ -50,7 +50,7 @@ endif ()
 #
 # [2021-03-31T18:06:32.656704 36900] Multiple input files: /usr/bin/clang++-11 and ../src/Storages/MergeTree/IMergeTreeDataPart.cpp
 #
-# Another1 way would be to use --ccache-skip option before clang++-11 to make
+# Another2 way would be to use --ccache-skip option before clang++-11 to make
 # ccache ignore it.
 option(ENABLE_CHECK_HEAVY_BUILDS "Don't allow C++ translation units to compile too long or to take too much memory while compiling." OFF)
 if (ENABLE_CHECK_HEAVY_BUILDS)
