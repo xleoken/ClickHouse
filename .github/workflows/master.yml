@@ -17,13 +17,9 @@ jobs:
         run: |
           ls -al
       - name: Cleanup
-        if: always()
         run: |
           # define a directory for the output artifacts
           output_dir="build_results"
-          # a simplest build
+          mkdir -p build_results
           ./docker/packager/packager --package-type=binary --output-dir "$output_dir"
-          # build debian packages
-          ./docker/packager/packager --package-type=deb --output-dir "$output_dir"
-          # by default, debian packages use thin LTO, so we can override it to speed up the build
-          CMAKE_FLAGS='-DENABLE_THINLTO=' ./docker/packager/packager --package-type=deb --output-dir "./$(git rev-parse --show-cdup)/build_results"
+          ls -al build_results
