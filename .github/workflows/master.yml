@@ -8,20 +8,15 @@ jobs:
   CherryPick:
     runs-on: ubuntu-latest
     steps:
-      - name: Set envs
-        # https://docs.github.com/en/actions/learn-github-actions/workflow-commands-for-github-actions#multiline-strings
-        run: |
-          git clone --recursive --shallow-submodules https://github.com/ClickHouse/ClickHouse.git
+      - name: "Checkout ${{ github.ref }}"
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+          submodules: true
       - name: Check out repository code
         run: |
           ls -al
-      - name: Auto-release
-        run: |
-          cd "$GITHUB_WORKSPACE/tests/ci"
-          python3 auto_release.py --release-after-days=3
       - name: Cleanup
         if: always()
         run: |
-          docker ps --quiet | xargs --no-run-if-empty docker kill ||:
-          docker ps --all --quiet | xargs --no-run-if-empty docker rm -f ||:
-          sudo rm -fr "$TEMP_PATH"
+          docker ps 
