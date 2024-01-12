@@ -19,15 +19,16 @@ jobs:
           persist-credentials: false
           submodules: true
 
-      - name: Check out repository code
+      - name: bbb
         run: |
           ls -al
           du -chs *
           docker ps
+
       - name: Cleanup
         run: |
           # define a directory for the output artifacts
-          echo
+          echo 123
 #
 #          output_dir="build_results"
 #          mkdir -p build_results
