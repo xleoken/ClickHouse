@@ -6,6 +6,7 @@ on: # yamllint disable-line rule:truthy
 
 jobs:
   CherryPick:
+    runs-on: ubuntu-latest
     steps:
       - name: Set envs
         # https://docs.github.com/en/actions/learn-github-actions/workflow-commands-for-github-actions#multiline-strings
