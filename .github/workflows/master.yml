@@ -11,7 +11,7 @@ jobs:
       - name: aaa
         run: |
           docker ps
-          ping registry.cn-hangzhou.aliyuncs.com    
+          ping -c 5 registry.cn-hangzhou.aliyuncs.com    
 
       - name: "Checkout ${{ github.ref }}"
         uses: actions/checkout@v2
