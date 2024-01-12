@@ -17,6 +17,7 @@ jobs:
         run: |
           ls -al
           du -chs *
+          docker ps
       - name: Cleanup
         run: |
           # define a directory for the output artifacts
