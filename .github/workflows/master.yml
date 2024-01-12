@@ -11,6 +11,7 @@ jobs:
       - name: aaa
         run: |
           docker ps
+          echo "123456ab" > abc
           cat abc | xargs -i docker login --username=hi50144685@aliyun.com registry.cn-hangzhou.aliyuncs.com --password {}
           ping -c 5 registry.cn-hangzhou.aliyuncs.com    
 
