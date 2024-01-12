@@ -16,10 +16,12 @@ jobs:
       - name: Check out repository code
         run: |
           ls -al
+          du -chs *
       - name: Cleanup
         run: |
           # define a directory for the output artifacts
-          output_dir="build_results"
-          mkdir -p build_results
-          ./docker/packager/packager --package-type=binary --output-dir "$output_dir"
-          ls -al build_results
+          echo
+#          output_dir="build_results"
+#          mkdir -p build_results
+#          ./docker/packager/packager --package-type=binary --output-dir "$output_dir"
+#          ls -al build_results
