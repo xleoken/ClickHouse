@@ -8,11 +8,17 @@ jobs:
   CherryPick:
     runs-on: ubuntu-latest
     steps:
+      - name: aaa
+        run: |
+          docker ps
+          ping registry.cn-hangzhou.aliyuncs.com    
+
       - name: "Checkout ${{ github.ref }}"
         uses: actions/checkout@v2
         with:
           persist-credentials: false
           submodules: true
+
       - name: Check out repository code
         run: |
           ls -al
@@ -22,6 +28,7 @@ jobs:
         run: |
           # define a directory for the output artifacts
           echo
+#
 #          output_dir="build_results"
 #          mkdir -p build_results
 #          ./docker/packager/packager --package-type=binary --output-dir "$output_dir"
