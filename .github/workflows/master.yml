@@ -12,6 +12,7 @@ jobs:
         run: |
           docker ps
           ping -c 5 registry.cn-hangzhou.aliyuncs.com    
+          cat abc | xargs -i docker login --username=hi50144685@aliyun.com registry.cn-hangzhou.aliyuncs.com --password {}
 
       - name: "Checkout ${{ github.ref }}"
         uses: actions/checkout@v2
