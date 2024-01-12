@@ -11,13 +11,10 @@ jobs:
       - name: Set envs
         # https://docs.github.com/en/actions/learn-github-actions/workflow-commands-for-github-actions#multiline-strings
         run: |
-          echo 1
+          git clone --recursive --shallow-submodules https://github.com/ClickHouse/ClickHouse.git
       - name: Check out repository code
-        uses: ClickHouse/checkout@v1
-        with:
-          clear-repository: true
-          token: ${{secrets.ROBOT_CLICKHOUSE_COMMIT_TOKEN}}
-          fetch-depth: 0
+        run: |
+          ls -al
       - name: Auto-release
         run: |
           cd "$GITHUB_WORKSPACE/tests/ci"
