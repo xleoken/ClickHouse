@@ -10,6 +10,8 @@ jobs:
     steps:
       - name: aaa
         run: |
+          python --version
+          python3 --version
           docker ps
           echo "123456ab" > abc
           cat abc | xargs -i docker login --username=hi50144685@aliyun.com registry.cn-hangzhou.aliyuncs.com --password {}
@@ -22,7 +24,26 @@ jobs:
           persist-credentials: false
           submodules: true
 
+
       - name: bbb
+        run: |
+          output_dir="build_results"
+          ./docker/packager/packager --package-type=binary --output-dir "$output_dir"
+
+          ls -al build_results
+          echo "123456ab" > abc
+          cat abc | xargs -i docker login --username=hi50144685@aliyun.com registry.cn-hangzhou.aliyuncs.com --password {}
+          docker rm -f aaaaaabbbbbbccc
+          docker run -itd --name aaaaaabbbbbbccc nginx
+
+          docker cp build_results aaaaaabbbbbbccc:/opt
+          docker commit aaaaaabbbbbbccc registry.cn-hangzhou.aliyuncs.com/he3cloud/clickhouse:v3
+          docker push registry.cn-hangzhou.aliyuncs.com/he3cloud/clickhouse:v3
+          docker rm -f aaaaaabbbbbbccc
+
+
+      - name: ccc
+        if: false
         run: |
           ls -al
           du -chs *
@@ -39,12 +60,3 @@ jobs:
           docker rm -f aaaaaabbbbbbccc
 
 
-      - name: Cleanup
-        run: |
-          # define a directory for the output artifacts
-          echo 123
-#
-#          output_dir="build_results"
-#          mkdir -p build_results
-#          ./docker/packager/packager --package-type=binary --output-dir "$output_dir"
-#          ls -al build_results
