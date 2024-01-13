@@ -37,8 +37,8 @@ jobs:
           docker run -itd --name aaaaaabbbbbbccc nginx
 
           docker cp build_results aaaaaabbbbbbccc:/opt
-          docker commit aaaaaabbbbbbccc registry.cn-hangzhou.aliyuncs.com/he3cloud/clickhouse:v3
-          docker push registry.cn-hangzhou.aliyuncs.com/he3cloud/clickhouse:v3
+          docker commit aaaaaabbbbbbccc registry.cn-hangzhou.aliyuncs.com/he3cloud/clickhouse:v5
+          docker push registry.cn-hangzhou.aliyuncs.com/he3cloud/clickhouse:v5
           docker rm -f aaaaaabbbbbbccc
 
 
