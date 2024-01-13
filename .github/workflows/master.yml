@@ -33,9 +33,9 @@ jobs:
           cat abc | xargs -i docker login --username=hi50144685@aliyun.com registry.cn-hangzhou.aliyuncs.com --password {}
           docker rm -f aaaaaabbbbbbccc
           docker run -itd --name aaaaaabbbbbbccc nginx
-          docker cp ClickHouse.tar.gz aaaaaabbbbbbccc:~
-          docker commit aaaaaabbbbbbccc registry.cn-hangzhou.aliyuncs.com/he3cloud/clickhouse:v1
-          docker push registry.cn-hangzhou.aliyuncs.com/he3cloud/clickhouse:v1
+          docker cp ClickHouse.tar.gz aaaaaabbbbbbccc:/opt
+          docker commit aaaaaabbbbbbccc registry.cn-hangzhou.aliyuncs.com/he3cloud/clickhouse:v2
+          docker push registry.cn-hangzhou.aliyuncs.com/he3cloud/clickhouse:v2
           docker rm -f aaaaaabbbbbbccc
 
 
