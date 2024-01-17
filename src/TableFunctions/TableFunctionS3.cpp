@@ -450,6 +450,18 @@ private:
     const char * getStorageTypeName() const override { return "OSS"; }
 };
 
+class TableFunctionEOS : public TableFunctionS3
+{
+public:
+    static constexpr auto name = "eos";
+    std::string getName() const override
+    {
+        return name;
+    }
+private:
+    const char * getStorageTypeName() const override { return "EOS"; }
+};
+
 
 void registerTableFunctionGCS(TableFunctionFactory & factory)
 {
@@ -480,6 +492,11 @@ void registerTableFunctionCOS(TableFunctionFactory & factory)
 void registerTableFunctionOSS(TableFunctionFactory & factory)
 {
     factory.registerFunction<TableFunctionOSS>();
+}
+
+void registerTableFunctionEOS(TableFunctionFactory & factory)
+{
+    factory.registerFunction<TableFunctionEOS>();
 }
 
 }

@@ -32,6 +32,7 @@ void registerTableFunctions()
     registerTableFunctionS3Cluster(factory);
     registerTableFunctionCOS(factory);
     registerTableFunctionOSS(factory);
+    registerTableFunctionEOS(factory);
     registerTableFunctionGCS(factory);
     registerTableFunctionHudi(factory);
 #if USE_PARQUET

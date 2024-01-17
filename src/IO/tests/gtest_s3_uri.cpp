@@ -131,6 +131,14 @@ TEST(S3UriTest, validPatterns)
         ASSERT_EQ(true, uri.is_virtual_hosted_style);
     }
     {
+        S3::URI uri("https://bucketname.eos.ap-beijing.myqcloud.com/data");
+        ASSERT_EQ("https://eos.ap-beijing.myqcloud.com", uri.endpoint);
+        ASSERT_EQ("bucketname", uri.bucket);
+        ASSERT_EQ("data", uri.key);
+        ASSERT_EQ("", uri.version_id);
+        ASSERT_EQ(true, uri.is_virtual_hosted_style);
+    }
+    {
         S3::URI uri("https://bucketname.s3.us-east-2.amazonaws.com/data");
         ASSERT_EQ("https://s3.us-east-2.amazonaws.com", uri.endpoint);
         ASSERT_EQ("bucketname", uri.bucket);
